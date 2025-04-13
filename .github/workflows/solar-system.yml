@@ -11,7 +11,7 @@ jobs:
     unit-testing:
         name: Unit Testing
         runs-on: ubuntu-latest
-        continue-on-error: True  
+        # continue-on-error: True  
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
@@ -26,9 +26,11 @@ jobs:
     
         - name: Unit Testing
           run: npm test
-          
+                    
         - name: Archive Test Result
+          if : always()
           uses: actions/upload-artifact@v4
+          
           with:
             name: Mocha-Test-Result
             path: test-results.xml
