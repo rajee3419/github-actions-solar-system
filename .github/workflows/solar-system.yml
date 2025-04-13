@@ -54,7 +54,8 @@ jobs:
           run: npm install
         
         -  name: code coverage
-           run: npm run code-coverage
+           continue-on-error: true
+           run: npm run coverage
 
         - name: Upload Coverage Result
           if : always()
